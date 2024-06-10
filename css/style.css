@@ -159,7 +159,7 @@ aside .sidebar a {
   transition: all 300ms ease;
 }
 
-aside .sidebar a span {
+aside .sidebar a i {
   font-size: 1.6rem;
   transition: all 300ms ease;
 }
@@ -183,16 +183,16 @@ aside .sidebar a:active::before {
   background: var(--main-color);
 }
 
-aside .sidebar a:active span {
+aside .sidebar a:active i {
   color: var(--bg-color);
   margin-left: calc(1rem - 3px);
 }
 
 aside .sidebar a:hover {
-  color: var(--main-color);
+  color: var(--main-color)
 }
 
-aside .sidebar a:hover span {
+aside .sidebar a:hover i {
   margin-left: 1rem;
 }
 
