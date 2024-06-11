@@ -512,9 +512,123 @@ main .main-content .sales svg circle {
 
 
 
+/* Small devices (phones, less than 768px) */
+@media (max-width: 767px) {
+  .home {
+    grid-template-columns: 1fr;
+  }
 
+  .header {
+    padding: 1rem 5%;
+  }
 
+  aside {
+    display: none;
+  }
 
+  main .main-content {
+    grid-template-columns: 1fr;
+  }
+
+  main .graph {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991px) {
+  .home {
+    grid-template-columns: 12rem auto 18rem;
+  }
+
+  .header {
+    padding: 1.5rem 7%;
+  }
+
+  main .main-content {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  main .graph {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1199px) {
+  .home {
+    grid-template-columns: 14rem auto 20rem;
+  }
+
+  .header {
+    padding: 2rem 8%;
+  }
+
+  main .main-content {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  main .graph {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Laptop screens (1024px to 1440px) */
+@media (min-width: 1024px) and (max-width: 1440px) {
+  .home {
+    grid-template-columns: 14rem auto 22rem;
+  }
+
+  .header {
+    padding: 2rem 8%;
+  }
+
+  main .main-content {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  main .graph {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Specific media query for 1366px width */
+@media (min-width: 1366px) and (max-width: 1366px) and (min-height: 768px) and (max-height: 768px) {
+  .home {
+    grid-template-columns: 14rem auto 22rem;
+  }
+
+  .header {
+    padding: 2rem 8%;
+  }
+
+  main .main-content {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  main .graph {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Extra large devices (large desktops, 1441px and up) */
+@media (min-width: 1441px) {
+  .home {
+    grid-template-columns: 14rem auto 23rem;
+  }
+
+  .header {
+    padding: 2rem 9%;
+  }
+
+  main .main-content {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  main .graph {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
 
 
 
