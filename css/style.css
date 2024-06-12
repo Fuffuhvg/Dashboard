@@ -123,8 +123,10 @@
 }
 
 aside {
+  left: -100%;
   height: 100%;
   background-color: black;
+  animation: showMenu 400ms ease fowards;
 }
 
 aside .top {
@@ -653,6 +655,12 @@ main .main-content .sales svg circle {
 
   75%,81% {
       opacity: 0;
+  }
+}
+
+@keyframes showMenu {
+  to {
+    left: 0;
   }
 }
 
