@@ -25,7 +25,7 @@ iconClose.addEventListener('click', ()=> {
 const sideMenu = document.querySelector("aside");
 const menuBtn = document.querySelector("#menu-btn");
 const closeBtn = document.querySelector("#close-btn");
-const themeToggler = document.querySelector('.theme');
+const themeToggler = document.querySelector(".theme");
 
 //show sidebar
 menuBtn.addEventListener('click', ()=> {

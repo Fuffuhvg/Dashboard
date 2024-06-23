@@ -13,6 +13,13 @@
     --third-color: #e90000;
     }
 
+    .dark-theme-variables {
+      --main-color:#ff0000 ;
+      --bg-color: black;
+      --sec-bg-color: black;
+      --third-color: #e90000;
+    }
+
   body {
     background-color: var(--bg-color);
   }
@@ -517,6 +524,7 @@ main .main-content .sales svg circle {
 /* Small devices (phones, less than 768px) */
 @media (max-width: 767px) {
   .home {
+    width: 100%;
     grid-template-columns: 1fr;
   }
 
@@ -525,7 +533,21 @@ main .main-content .sales svg circle {
   }
 
   aside {
-    display: none;
+    position: fixed;
+    left: 0;
+    width: 18rem;
+    z-index: 3;
+    box-shadow: 1rem 3rem 4rem;
+    height: 100vh;
+  }
+
+  aside .sidebar h3{
+    display: inline;
+  }
+
+  aside .sidebar a{
+    width: 100%;
+    height: 3.4rem;
   }
 
   main .main-content {
