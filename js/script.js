@@ -39,7 +39,18 @@ closeBtn.addEventListener('click', () => {
 
 
 //change theme 
-var icon = document.getElementById("icon");
-icon.onclick = function() {
-  document.body.classList.contains("dark-theme")
+let btn = document.getElementById("btn");
+let btnText = document.getElementById("btnText");
+let btnIcon = document.getElementById("btnIcon");
+
+btn.onclick = function(){
+  document.body.classList.toggle("dark-theme");
+
+  if( document.body.classList.contains("dark-theme")) {
+    btnIcon.src = "img/sun.png";
+    btnText.innerHTML = "Light";
+  } else{
+    btnIcon.src = "img/moon.png";
+    btnText.innerHTML = "Dark";
+  }
 }
