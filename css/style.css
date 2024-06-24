@@ -13,7 +13,7 @@
     --third-color: #e90000;
     }
 
-    .dark-theme-variables {
+    .dark-theme {
       --main-color:#ff0000 ;
       --bg-color: black;
       --sec-bg-color: black;
@@ -56,6 +56,7 @@
   small {
     font-size: 0.75rem;
   }
+
 
   .profile-photo {
     width: 3.8rem;
@@ -316,7 +317,6 @@ main .main-content .sales svg circle {
 
 .navbar a{
   font-size: 1.6rem;
-  color: var(--text-color);
   font-weight: 500; 
   margin-left: 3.5rem;
   transition: 1s;
