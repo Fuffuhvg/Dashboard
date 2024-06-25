@@ -37,4 +37,3 @@ closeBtn.addEventListener('click', () => {
   sideMenu.style.left = '-100%';
 });
 
-
