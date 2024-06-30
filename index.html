@@ -66,14 +66,58 @@
   </aside>
   <!--aside end-->
 
-  <main>
+  <div class="main-content">
     <div class="date">
       <input type="date">
     </div>
+    <div class="main-cards">
 
+      <div class="card">
+        <div class="card-inner">
+          <h3>SALES BY AMOUNT</h3>
+          <h2>24</h2>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-inner">
+          <h3>SALES BY AMOUNT</h3>
+          <h2>24</h2>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-inner">
+          <h3>SALES BY AMOUNT</h3>
+          <h2>24</h2>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-inner">
+          <h3>SALES BY AMOUNT</h3>
+          <h2>24</h2>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-inner">
+          <h3>SALES BY AMOUNT</h3>
+          <h2>24</h2>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-inner">
+          <h3>SALES BY AMOUNT</h3>
+          <h2>24</h2>
+        </div>
+      </div>
+    </div>
+<!--
     <div class="main-content">
       <div class="sales">
-        <!--icon-->
+        icon
         <div class="middle">
           <div class="left">
             <h3>SALES BY AMOUNT</h3>
@@ -92,7 +136,7 @@
       </div>
 
       <div class="sales">
-        <!--icon-->
+        <!--icon
         <div class="middle">
           <div class="left">
             <h3>TOTAL NO. OF SKUS SOLD</h3>
@@ -111,7 +155,7 @@
       </div>
 
       <div class="sales">
-        <!--icon-->
+        <!--icon
         <div class="middle">
           <div class="left">
             <h3>TOTAL NO. OF CUSTOMERS SOLD TO</h3>
@@ -130,7 +174,7 @@
       </div>
 
       <div class="sales">
-        <!--icon-->
+        <!--icon
         <div class="middle">
           <div class="left">
             <h3>PERCENTAGE INCREMENT AGAINST LAST YEAR VALUES</h3>
@@ -150,7 +194,7 @@
 
 
       <div class="sales">
-        <!--icon-->
+        <!--icon
         <div class="middle">
           <div class="left">
             <h3>PERCENTAGE DECREMENT AGAINST LAST YEAR VALUES</h3>
@@ -170,7 +214,7 @@
 
 
       <div class="sales">
-        <!--icon-->
+        <!--icon
         <div class="middle">
           <div class="left">
             <h3>SLOW MOVING SKUS</h3>
@@ -193,28 +237,32 @@
     <canvas id="myLineChart" style="width:100%;max-width:700px"></canvas>
 
     <canvas id="myChart" style="width:100%;max-width:700px"></canvas>
-  </div>
+  </div>-->
 
-  </main>
-   <!--main-content end-->
+  <div class="charts">
+    <div class="charts-card">
+      <h2 class="chart-title"> BEST SELLING PRODUCTS BY QUANTITY</h2>
+      <div id="bar-charts"></div>
+    </div>
 
-  <div class="right">
-    <div class="top">
-      <button id="menu-btn">
-     <i class='bx bx-menu'></i>
-      </button>
+    <div class="charts-card">
+      <h2 class="chart-title"> TOTAL SALES BY PRODUCT QUANTITY + AMOUNT OVER TIME</h2>
+      <div id="line-charts"></div>
     </div>
   </div>
 
-  </div>
-
+</div>
+   <!--main-content end-->
   <!--JavaScript-->
   <script
   src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
   </script>
 
   <script src="js/chart.js"></script>
+  <!--ApexCharts-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.49.2/apexcharts.min.js"></script>
   <script src="js/theme.js"></script>
   <script src="js/script.js"></script>
+  
 </body>
 </html>
