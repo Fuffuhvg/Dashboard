@@ -14,8 +14,8 @@
   
   .dark-theme {
     --main-color: white;
-    --background-color: black;
-    --text-color: white;
+    --background-color: #181717;
+    --text-color: #f5f5f5;
   }
   
   body {
@@ -73,7 +73,7 @@
   }
 
   .info p {
-    color: #f5f5f5;
+    color: var(--text-color);
   }
   
 
@@ -81,7 +81,6 @@
 .home {
   display: grid;
   grid-template-columns: 260px 1fr 1fr 1fr;
-  
   grid-template-areas: "sidebar header header header"
   "sidebar main main main ";
   height: 100vh;
@@ -94,9 +93,9 @@
   left: 0;
   width: 100%;
   height: 76px;
-  padding: 2rem 9%;
-  background: rgb(24, 23, 23);
-  border-bottom: solid #f5f5f5;
+  
+  background: var(--background-color);
+  border-bottom: solid var(--text-color);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -115,8 +114,8 @@
   font-weight: 700;
   text-decoration: none;
   color: transparent;
-  -webkit-text-stroke: .7px var(--main-color);
-  background-image: linear-gradient(var(--main-color), var(--main-color));
+  -webkit-text-stroke: .7px #ff0000;
+  background-image: linear-gradient(#ff0000, #ff0000);
   background-repeat: no-repeat;
   -webkit-background-clip: text;
   background-position: -9.6rem 0;
@@ -131,7 +130,7 @@
   left: 0;
   width: 0;
   height: 100%;
-  border-right: 2px solid var(--main-color);
+  border-right: 2px solid #ff0000;
   z-index: -1;
  
 }
@@ -146,10 +145,11 @@
   display: flex;
   justify-content: center;
   right: 50%;
+  bottom: 0;
 }
 
 .header .heading h1 {
-  color: #f5f5f5;
+  color: var(--text-color);
   z-index: 2;
 }
 
@@ -179,9 +179,9 @@ aside .close {
 
 aside .sidebar {
   grid-area: sidebar;
-  color: #f5f5f5;
-  border-right: solid #f5f5f5;
-  background: rgb(24, 23, 23);
+  color: var(--text-color);
+  border-right: solid var(--text-color);
+  background: var(--background-color);
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -191,7 +191,7 @@ aside .sidebar {
 
 aside .sidebar a {
   display: flex;
-  color: var(--sec-bg-color);
+  color: var(--text-color);
   margin-left: 2rem;
   gap: 1rem;
   align-items: center;
@@ -212,7 +212,7 @@ aside .sidebar a:last-child{
 }
 
 aside .sidebar a:active {
-  background: var(--sec-bg-color);
+  background: var(--background-color);
   color: var(--bg-color);
   margin-left: 0;
 }
@@ -225,12 +225,12 @@ aside .sidebar a:active::before {
 }
 
 aside .sidebar a:active i {
-  color: var(--bg-color);
+  color: var(--background-color);
   margin-left: calc(1rem - 3px);
 }
 
 aside .sidebar a:hover {
-  color: var(--main-color)
+  color: #ff0000;
 }
 
 aside .sidebar a:hover i {
@@ -247,16 +247,16 @@ aside .sidebar a:hover i {
 
 .main-content .date {
   display: inline-block;
-  background: var(--bg-color);
+  background: var(--background-color);
   border-radius: .8rem;
-  border: 2px solid black;
+  border: 2px solid var(--text-color);
   margin-top: 1rem;
   padding: 0.5rem 1.6rem;
 }
 
 .main-content .date input[type="date"] {
   background: transparent;
-  color: var(--sec-bg-color);
+  color: var(--text-color);
 } 
 
 
@@ -387,7 +387,7 @@ main .main-content .sales svg circle {
 }
 
 .charts-card {
-  background-color: white;
+  background-color: var(--background-color);
   margin-bottom: 20px;
   padding: 25px;
   box-sizing: border-box;
@@ -404,13 +404,13 @@ main .main-content .sales svg circle {
 
 .toggle-btn {
   position: absolute;
-  background: #ff0000;
-  color: #FFF;
+  background: var(--text-color);
+  color: var(--background-color);
   display: flex;
   align-items: center;
   justify-content: center;
-  top: 1rem;
-  right: 15%;
+  bottom: .5rem;
+  right: 12%;
   width: 110px;
   height: 40px;
   border-radius: 20px;

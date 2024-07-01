@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
         show: false,
       },
     },
-    colors: ['#ff0000', '#000000', '#ff0000', '#000000', '#ff0000'],
+    colors: ['#ff0000', 'var(--text-color)', '#ff0000', 'var(--text-color)', '#ff0000'],
     plotOptions: {
       bar: {
         distributed: true,
@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function () {
       opacity: 1,
     },
     grid: {
-      borderColor: '#000000',
+      borderColor: 'var(--text-color)',
       yaxis: {
         lines: {
           show: true,
@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function () {
     },
     legend: {
       labels: {
-        colors: '#000000',
+        colors: 'var(--text-color)',
       },
       show: true,
       position: 'top',
@@ -63,12 +63,12 @@ document.addEventListener('DOMContentLoaded', function () {
       categories: ['Laptop', 'Phone', 'Monitor', 'Headphones', 'Camera'],
       title: {
         style: {
-          color: '#000000',
+          color: 'var(--text-color)',
         },
       },
       axisBorder: {
         show: true,
-        color: '#000000',
+        color: 'var(--text-color)',
       },
       axisTicks: {
         show: true,
@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', function () {
       },
       labels: {
         style: {
-          colors: '#000000',
+          colors: 'var(--text-color)',
         },
       },
     },
@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', function () {
       title: {
         text: 'Count',
         style: {
-          color: '#000000',
+          color: 'var(--text-color)',
         },
       },
       axisBorder: {
@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', function () {
       },
       labels: {
         style: {
-          colors: '#000000',
+          colors: 'var(--text-color)',
         },
       },
     },
@@ -113,7 +113,7 @@ document.addEventListener('DOMContentLoaded', function () {
 const lineChartsoptions = {
   series: [{
     name: "Desktops",
-    data: [10, 41, 35, 51, 49, 62, 69, 91, 148]
+    data: [10, 41, 35, 51, 49, 62, 69, 91, 148, 155, 160, 165]
 }],
   chart: {
   height: 350,
@@ -130,24 +130,48 @@ tooltip: {
   intersect: false,
   theme: 'dark',
 },
+
 stroke: {
   curve: 'smooth'
 },
 title: {
   text: 'Product Trends by Month',
+  style: {
+    color: 'var(--text-color)',
+  },
   align: 'left'
 },
 colors: ['#ff0000'],
 
 grid: {
   row: {
-    colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
+    colors: ['var(--text-color)', 'transparent'], // takes an array which will be repeated on columns
     opacity: 0.5
   },
 },
 xaxis: {
-  categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
-}
+  categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+  labels: {
+    style: {
+      colors: 'var(--text-color)',
+    },
+  },
+},
+
+yaxis: {
+  title: {
+    text: 'Quantity',
+    style: {
+      color: 'var(--text-color)',
+    },
+  },
+
+  labels: {
+    style: {
+      colors: 'var(--text-color)',
+    },
+  },
+},
 };
 
 const lineChart = new ApexCharts(document.querySelector("#line-charts"), lineChartsoptions);
