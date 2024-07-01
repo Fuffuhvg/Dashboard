@@ -125,8 +125,13 @@ const lineChartsoptions = {
 dataLabels: {
   enabled: false
 },
+tooltip: {
+  shared: true,
+  intersect: false,
+  theme: 'dark',
+},
 stroke: {
-  curve: 'straight'
+  curve: 'smooth'
 },
 title: {
   text: 'Product Trends by Month',
