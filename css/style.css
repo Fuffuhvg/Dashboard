@@ -156,6 +156,7 @@
 aside {
   position: fixed;
   height: 100vh;
+  padding-bottom: 2%;
   left: 0; /* Align the sidebar to the left */
   top: 0; /* Align the sidebar to the top */
   width: 260px; /* Adjust the width as necessary */
