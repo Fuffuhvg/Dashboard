@@ -10,19 +10,17 @@
     --main-color: #ff0000;
     --background-color: #f5f5f5;
     --text-color: #000000;
-    --third-color: #e90000;
   }
   
   .dark-theme {
     --main-color: white;
     --background-color: black;
     --text-color: white;
-    --third-color: #e90000;
   }
   
   body {
   background-color: var(--background-color);
-    color: var(--text-color);
+  color: var(--text-color);
   }
 
   a {
@@ -182,6 +180,7 @@ aside .close {
 aside .sidebar {
   grid-area: sidebar;
   color: #f5f5f5;
+  border-right: solid #f5f5f5;
   background: rgb(24, 23, 23);
   display: flex;
   flex-direction: column;
@@ -277,7 +276,7 @@ aside .sidebar a:hover i {
 }
 
 .card:first-child {
-  background-color: red;
+  background-color: #ff0000;
 }
 
 .card:nth-child(2) {
@@ -287,7 +286,7 @@ aside .sidebar a:hover i {
 }
 
 .card:nth-child(3) {
-  background-color: red;
+  background-color: #ff0000;
 }
 
 .card:nth-child(4) {
@@ -297,7 +296,7 @@ aside .sidebar a:hover i {
 }
 
 .card:nth-child(5) {
-  background-color: red;
+  background-color: #ff0000;
 }
 
 .card:nth-child(6) {
@@ -405,7 +404,7 @@ main .main-content .sales svg circle {
 
 .toggle-btn {
   position: absolute;
-  background: red;
+  background: #ff0000;
   color: #FFF;
   display: flex;
   align-items: center;
