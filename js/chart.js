@@ -33,12 +33,12 @@ document.addEventListener('DOMContentLoaded', function () {
       borderColor: 'var(--text-color)',
       yaxis: {
         lines: {
-          show: true,
+          show: false,
         },
       },
       xaxis: {
         lines: {
-          show: true,
+          show: false,
         },
       },
     },
