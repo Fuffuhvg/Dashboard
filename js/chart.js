@@ -212,11 +212,28 @@ window.onload = function() {
   chart.render();
 };
 
+
+//gradient-line
 document.addEventListener('DOMContentLoaded', function () {
-  // Initial data
-  var weeklyData = [4, 3, 10, 9, 29, 19, 22];
+  // Define weekly data for each month
+  var weeklyData = {
+    'January': [4, 3, 10, 9, 29],
+    'February': [19, 22, 18, 15, 10],
+    'March': [8, 11, 12, 8, 3],
+    'April': [15, 18, 20, 17, 12],
+    'May': [22, 25, 28, 20, 18],
+    'June': [10, 12, 15, 11, 8],
+    'July': [25, 28, 30, 27, 22],
+    'August': [16, 19, 22, 18, 15],
+    'September': [7, 10, 13, 9, 5],
+    'October': [18, 20, 22, 17, 14],
+    'November': [12, 15, 18, 13, 10],
+    'December': [28, 30, 32, 29, 25]
+  };
+
   var monthlyData = [4, 3, 10, 9, 29, 19, 22, 9, 12, 7, 19, 5];
 
+  // Initial chart options
   var options = {
     series: [{
       name: 'Sales',
@@ -263,26 +280,58 @@ document.addEventListener('DOMContentLoaded', function () {
   var chart = new ApexCharts(document.querySelector("#gradient-chart"), options);
   chart.render();
 
-  // Switch between weekly and monthly data
-  document.getElementById('weeklyBtn').addEventListener('click', function () {
-    chart.updateSeries([{
-      data: weeklyData
-    }]);
-    chart.updateOptions({
-      xaxis: {
-        categories: ['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5', 'Week 6', 'Week 7'] // Adjusted for weekly data
+  // Dropdown button functionality
+  var dropdown = document.querySelector('.dropdown');
+  var dropdownContent = document.querySelector('.dropdown-content');
+
+  dropdown.addEventListener('click', function () {
+    dropdown.classList.toggle('active');
+  });
+
+  // Dropdown item click functionality
+  var dropdownItems = document.querySelectorAll('.dropdown-content a');
+  dropdownItems.forEach(function(item) {
+    item.addEventListener('click', function(e) {
+      e.preventDefault();
+      var selectedMonth = item.getAttribute('data-month');
+      var selectedData = weeklyData[selectedMonth];
+      var numOfWeeks = selectedData.length;
+      var weekLabels = [];
+      for (var i = 1; i <= numOfWeeks; i++) {
+        weekLabels.push('Week ' + i);
       }
+      chart.updateSeries([{
+        data: selectedData
+      }]);
+      chart.updateOptions({
+        xaxis: {
+          categories: weekLabels
+        }
+      });
+      dropdown.classList.remove('active');
     });
   });
 
+  // Switch to monthly data
   document.getElementById('monthlyBtn').addEventListener('click', function () {
     chart.updateSeries([{
       data: monthlyData
     }]);
     chart.updateOptions({
       xaxis: {
-        categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'] // Reset to monthly categories
+        categories: options.xaxis.categories // Reset to monthly categories
       }
     });
+    dropdown.classList.remove('active');
+  });
+
+  // Close dropdown when clicking outside
+  window.addEventListener('click', function(e) {
+    if (!dropdown.contains(e.target)) {
+      dropdown.classList.remove('active');
+    }
   });
 });
+
+
+

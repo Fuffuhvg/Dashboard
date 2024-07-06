@@ -425,6 +425,65 @@ main .main-content .sales svg circle {
   margin-left: 10px;
 }
 
+/* Dropdown button */
+.dropbtn {
+  background-color: #3498db;
+  color: white;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+/* Dropdown container */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown content (hidden by default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  width: 120px; /* Adjust width as needed */
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  top: 40px; /* Adjust the top position as needed */
+  right: 0;
+  max-height: 200px; /* Maximum height for scroll */
+  overflow-y: auto; /* Enable vertical scroll */
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 8px 12px; /* Adjust padding as needed */
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+
+/* Show the dropdown menu on click */
+.dropdown.active .dropdown-content {
+  display: block;
+}
+
+/* Triangle indicator */
+.dropdown-content::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  right: 10px;
+  border-width: 0 8px 8px;
+  border-style: solid;
+  border-color: transparent transparent #f9f9f9;
+}
+
 
 
 
