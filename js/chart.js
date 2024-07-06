@@ -211,3 +211,78 @@ window.onload = function() {
   var chart = new ApexCharts(document.querySelector("#horizontal-bar-charts"), options);
   chart.render();
 };
+
+document.addEventListener('DOMContentLoaded', function () {
+  // Initial data
+  var weeklyData = [4, 3, 10, 9, 29, 19, 22];
+  var monthlyData = [4, 3, 10, 9, 29, 19, 22, 9, 12, 7, 19, 5];
+
+  var options = {
+    series: [{
+      name: 'Sales',
+      data: monthlyData // Initial data shown is monthly
+    }],
+    chart: {
+      height: 350,
+      type: 'line',
+      toolbar: {
+        show: false
+      }
+    },
+    stroke: {
+      width: 5,
+      curve: 'smooth'
+    },
+    xaxis: {
+      type: 'category',
+      categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'], // Monthly categories initially
+      tickAmount: 12,
+    },
+    title: {
+      text: 'Forecast',
+      align: 'left',
+      style: {
+        fontSize: "16px",
+        color: '#666'
+      }
+    },
+    fill: {
+      type: 'gradient',
+      gradient: {
+        shade: 'dark',
+        gradientToColors: ['#FDD835'],
+        shadeIntensity: 1,
+        type: 'horizontal',
+        opacityFrom: 1,
+        opacityTo: 1,
+        stops: [0, 100]
+      },
+    }
+  };
+
+  var chart = new ApexCharts(document.querySelector("#gradient-chart"), options);
+  chart.render();
+
+  // Switch between weekly and monthly data
+  document.getElementById('weeklyBtn').addEventListener('click', function () {
+    chart.updateSeries([{
+      data: weeklyData
+    }]);
+    chart.updateOptions({
+      xaxis: {
+        categories: ['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5', 'Week 6', 'Week 7'] // Adjusted for weekly data
+      }
+    });
+  });
+
+  document.getElementById('monthlyBtn').addEventListener('click', function () {
+    chart.updateSeries([{
+      data: monthlyData
+    }]);
+    chart.updateOptions({
+      xaxis: {
+        categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'] // Reset to monthly categories
+      }
+    });
+  });
+});
