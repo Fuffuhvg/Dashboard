@@ -37,3 +37,8 @@ closeBtn.addEventListener('click', () => {
   sideMenu.style.left = '-100%';
 });
 
+//table
+$(window).on("load resize ", function() {
+  var scrollWidth = $('.tbl-content').width() - $('.tbl-content table').width();
+  $('.tbl-header').css({'padding-right':scrollWidth});
+}).resize();
