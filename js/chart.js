@@ -190,6 +190,16 @@ window.onload = function() {
       type: 'bar',
       height: 350
     },
+
+    tooltip: {
+      shared: true,
+      intersect: false,
+      theme: 'dark',
+      style: {
+        color: 'var(--text-color)',
+      },
+    },
+    
     plotOptions: {
       bar: {
         borderRadius: 4,
@@ -202,10 +212,24 @@ window.onload = function() {
       enabled: false
     },
     xaxis: {
-      categories: ['South Korea', 'Canada', 'United Kingdom', 'Netherlands', 'Italy', 'France', 'Japan',
-        'United States', 'China', 'Germany'
+      categories: ['A', 'B', 'C', 'D', 'E', 'F', 'J',
+        'K', 'Y', 'G'
       ],
-    }
+
+      labels: {
+        style: {
+          colors: 'var(--text-color)',
+        },
+      },
+    },
+
+    yaxis: {
+      labels: {
+        style: {
+          colors: 'var(--text-color)',
+        },
+      },
+    },
   };
 
   var chart = new ApexCharts(document.querySelector("#horizontal-bar-charts"), options);
@@ -236,28 +260,60 @@ document.addEventListener('DOMContentLoaded', function () {
         speed: 800
       }
     },
+   
+    tooltip: {
+      shared: true,
+      intersect: false,
+      theme: 'dark',
+      style: {
+        color: 'var(--text-color)',
+      },
+    },
+
     stroke: {
       width: 5,
       curve: 'smooth'
     },
+
+    yaxis: {
+      title: {
+        text: 'Quantity',
+        style: {
+          color: 'var(--text-color)',
+        },
+      },
+    
+      labels: {
+        style: {
+          colors: 'var(--text-color)',
+        },
+      },
+    },
+    
+
     xaxis: {
       type: 'category',
       categories: generateMonthLabels(), // Initial x-axis labels are monthly
       tickAmount: monthlyData.length,
+      labels: {
+        style: {
+          colors: 'var(--text-color)',
+        },
+      },
     },
     title: {
       text: 'Monthly Sales',
       align: 'left',
       style: {
         fontSize: "16px",
-        color: '#666'
+        color: 'var(--text-color)'
       }
     },
     fill: {
       type: 'gradient',
       gradient: {
         shade: 'dark',
-        gradientToColors: ['#FDD835'],
+        gradientToColors: ['#ff0000'],
         shadeIntensity: 1,
         type: 'horizontal',
         opacityFrom: 1,
