@@ -339,12 +339,46 @@ document.addEventListener('DOMContentLoaded', function () {
       return weeklyData;
     }
 
-    // Distribute monthly total across weeks of selected month
+    // Example uneven distribution for each month
+    var distribution = {
+      'January': [15, 25, 20, 10, 30], // Uneven distribution for January
+      'February': [10, 20, 30, 40],
+      'March': [15, 15, 20, 25, 25], // Uneven distribution for March
+      'April': [30, 20, 10, 40],
+      'May': [10, 20, 20, 25, 25], // Uneven distribution for May
+      'June': [25, 35, 15, 25],
+      'July': [20, 20, 20, 15, 25], // Uneven distribution for July
+      'August': [25, 15, 20, 20, 20], // Uneven distribution for August
+      'September': [30, 25, 20, 25],
+      'October': [10, 20, 20, 25, 25], // Uneven distribution for October
+      'November': [20, 40, 20, 20],
+      'December': [10, 30, 20, 10, 30] // Uneven distribution for December
+    };
+
+    var selectedDistribution = distribution[selectedMonth] || distributeEvenly(monthlyTotal, numOfWeeks);
+    weeklyData = distributeUnevenly(monthlyTotal, numOfWeeks, selectedDistribution);
+
+    return weeklyData;
+  }
+
+  // Helper function to distribute weekly data evenly
+  function distributeEvenly(monthlyTotal, numOfWeeks) {
+    var weeklyData = [];
     for (var i = 0; i < numOfWeeks; i++) {
       var weeklyValue = Math.round(monthlyTotal / numOfWeeks);
       weeklyData.push(weeklyValue);
     }
+    return weeklyData;
+  }
 
+  // Helper function to distribute weekly data unevenly based on provided distribution
+  function distributeUnevenly(monthlyTotal, numOfWeeks, distribution) {
+    var weeklyData = [];
+    var totalPercent = distribution.reduce((a, b) => a + b, 0);
+    for (var i = 0; i < numOfWeeks; i++) {
+      var weeklyValue = Math.round(monthlyTotal * (distribution[i] / totalPercent));
+      weeklyData.push(weeklyValue);
+    }
     return weeklyData;
   }
 
@@ -390,6 +424,10 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 });
+
+
+
+
 
 
 
