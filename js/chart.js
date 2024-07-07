@@ -221,7 +221,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // Initial chart options
   var options = {
     series: [{
-      name: 'Sales',
+      name: 'Sales', 
       data: monthlyData // Initial data shown is for monthly data
     }],
     chart: {
@@ -284,9 +284,12 @@ document.addEventListener('DOMContentLoaded', function () {
     item.addEventListener('click', function(e) {
       e.preventDefault();
       var selectedMonth = item.getAttribute('data-month');
+      console.log('Selected Month:', selectedMonth);
       var selectedData = calculateWeeklyData(monthlyData, selectedMonth);
+      console.log('Selected Data:', selectedData);
       var numOfWeeks = selectedData.length;
       var weekLabels = generateWeekLabels(numOfWeeks);
+      console.log('Week Labels:', weekLabels);
       
       // Update chart with weekly data
       chart.updateSeries([{
@@ -324,72 +327,24 @@ document.addEventListener('DOMContentLoaded', function () {
   // Helper function to calculate weekly data based on monthly totals
   function calculateWeeklyData(monthlyData, selectedMonth) {
     var numOfWeeks = getNumOfWeeks(selectedMonth); // Get number of weeks for selected month
-    var monthlyTotal = monthlyData[getMonthIndex(selectedMonth)];
+    console.log('Number of Weeks:', numOfWeeks);
+    var monthIndex = getMonthIndex(selectedMonth);
+    console.log('Month Index:', monthIndex);
+    var monthlyTotal = monthlyData[monthIndex];
+    console.log('Monthly Total:', monthlyTotal);
     var weeklyData = [];
 
-    // Distribute monthly total across weeks of selected month
-    switch (selectedMonth) {
-      case 'January':
-        weeklyData = distributeUnevenly(monthlyTotal, numOfWeeks, [20, 30, 10, 40]); // Example distribution for January
-        break;
-      case 'February':
-        weeklyData = distributeUnevenly(monthlyTotal, numOfWeeks, [10, 20, 30, 40]); // Example distribution for February
-        break;
-      case 'March':
-        weeklyData = distributeUnevenly(monthlyTotal, numOfWeeks, [25, 15, 30, 30]); // Example distribution for March
-        break;
-      case 'April':
-        weeklyData = distributeUnevenly(monthlyTotal, numOfWeeks, [30, 10, 20, 40]); // Example distribution for April
-        break;
-      case 'May':
-        weeklyData = distributeUnevenly(monthlyTotal, numOfWeeks, [15, 25, 25, 35]); // Example distribution for May
-        break;
-      case 'June':
-        weeklyData = distributeUnevenly(monthlyTotal, numOfWeeks, [40, 30, 20, 10]); // Example distribution for June
-        break;
-      case 'July':
-        weeklyData = distributeUnevenly(monthlyTotal, numOfWeeks, [5, 20, 30, 45]); // Example distribution for July
-        break;
-      case 'August':
-        weeklyData = distributeUnevenly(monthlyTotal, numOfWeeks, [35, 25, 15, 25]); // Example distribution for August
-        break;
-      case 'September':
-        weeklyData = distributeUnevenly(monthlyTotal, numOfWeeks, [30, 40, 10, 20]); // Example distribution for September
-        break;
-      case 'October':
-        weeklyData = distributeUnevenly(monthlyTotal, numOfWeeks, [10, 30, 30, 30]); // Example distribution for October
-        break;
-      case 'November':
-        weeklyData = distributeUnevenly(monthlyTotal, numOfWeeks, [20, 40, 20, 20]); // Example distribution for November
-        break;
-      case 'December':
-        weeklyData = distributeUnevenly(monthlyTotal, numOfWeeks, [25, 25, 25, 25]); // Example distribution for December
-        break;
-      default:
-        weeklyData = distributeEvenly(monthlyTotal, numOfWeeks); // Default even distribution
-        break;
+    if (isNaN(monthlyTotal)) {
+      console.error('Invalid monthly total for selected month:', selectedMonth);
+      return weeklyData;
     }
 
-    return weeklyData;
-  }
-
-  // Helper function to distribute weekly data evenly
-  function distributeEvenly(monthlyTotal, numOfWeeks) {
-    var weeklyData = [];
+    // Distribute monthly total across weeks of selected month
     for (var i = 0; i < numOfWeeks; i++) {
       var weeklyValue = Math.round(monthlyTotal / numOfWeeks);
       weeklyData.push(weeklyValue);
     }
-    return weeklyData;
-  }
 
-  // Helper function to distribute weekly data unevenly based on provided distribution
-  function distributeUnevenly(monthlyTotal, numOfWeeks, distribution) {
-    var weeklyData = [];
-    for (var i = 0; i < numOfWeeks; i++) {
-      var weeklyValue = Math.round(monthlyTotal * (distribution[i] / 100));
-      weeklyData.push(weeklyValue);
-    }
     return weeklyData;
   }
 
@@ -404,7 +359,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Helper function to generate month labels
   function generateMonthLabels() {
-    return ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    return ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
   }
 
   // Helper function to get index of month in array
@@ -435,6 +390,9 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 });
+
+
+
 
 
 
