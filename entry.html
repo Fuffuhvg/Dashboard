@@ -1,16 +1,120 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Entry</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DASHBOARD</title>
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <!--box icons-->
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+  <!--google font-->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
+
+<!--material icons-->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
 </head>
 <body>
+  <div class="home">
     
+   <header class="header">
+      <a href="#" class="logo">Gilani's</a>
 
+      <div class="heading">
+        <h1>DASHBOARD</h1>
+      </div>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.49.2/apexcharts.min.js"></script>
+      <div class="toggle-btn" id="theme-toggler">
+        <span id="btnText">Dark</span>
+        <img src="img/moon.png" id="btnIcon">
+      </div>
+
+      <div class="profile">
+        <div class="info">
+          <p>Hey, <b>Saka</b></p>
+        </div>
+        <div class="profile-photo">
+          <img src="img/0_Saka.webp" alt="">
+        </div>
+      </div>
+    </header> 
+    <aside>
+      <div class="top">
+    <div class="close" id="close-btn">
+       <i class='bx bx-x'></i>
+    </div>
+   </div>
+   <div class="sidebar">
+    <a href="index.html">
+      <i class='bx bxs-dashboard'></i>
+      <h3>Dashboard</h3>
+
+      <a href="analysis.html">
+        <i class='bx bx-line-chart'></i>
+        <h3>Analysis by Company</h3>
+  
+
+      <a href="#">
+        <i class='bx bxs-data'></i>
+        <h3>Data Entry</h3>
+      </a>
+
+    </a>
+    <a href="#">
+      <i class='bx bx-log-out'></i>
+      <h3>logout</h3>
+    </a>
+   </div>
+   </aside>
+   <!--aside end-->
+
+   <div class="main-content">
+    <div class="entry">
+    <form action="#">
+      <div class="input-box">
+          <div class="input-field">
+              <input type="text" placeholder="Data" required>
+              <span class="focus"></span> 
+          </div>
+          <div class="input-field">
+              <input type="text" placeholder="Data" required>
+              <span class="focus"></span>
+          </div>
+          </div>
+
+      <div class="input-box">
+          <div class="input-field">
+              <input type="text" placeholder="Data" required>
+              <span class="focus"></span>
+          </div>
+          <div class="input-field">
+              <input type="text" placeholder="Data" required>
+              <span class="focus"></span>
+          </div>
+          <div class="input-field">
+            <input type="text" placeholder="Data" required>
+            <span class="focus"></span>
+        </div>
+      </div>
+      <div class="btn-box btns">
+          <button type="submit" class="btn">Submit</button>
+      </div>
+    </form>
+  </div>
+   </div>
+   <!--main-content end-->
+  <!--JavaScript-->
   <script src="js/theme.js"></script>
   <script src="js/script.js"></script>
+  
 </body>
 </html>

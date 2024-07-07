@@ -10,13 +10,16 @@
     --main-color: #ff0000;
     --background-color: #f5f5f5;
     --text-color: #000000;
-    --chart-bg:white;  }
+    --chart-bg:white;  
+    --focus: #f5f5f5;
+  }
   
   .dark-theme {
     --main-color: white;
-    --background-color: #181717;
+    --background-color: #0c0606;
     --text-color: #f5f5f5;
     --chart-bg:black;
+    --focus: #454545;
   }
   
   body {
@@ -278,27 +281,27 @@ aside .sidebar a:hover i {
 }
 
 .card:first-child {
-  background-image: linear-gradient(#ff0000, pink);
+  background: radial-gradient(circle at 10.6% 22.1%, rgb(206, 18, 18) 0%, rgb(122, 21, 21) 100.7%);
 }
 
 .card:nth-child(2) {
-  background-image: linear-gradient(#181717, pink);
+  background: linear-gradient(109.6deg, rgba(0, 0, 0, 0.93) 11.2%, rgb(63, 61, 61) 78.9%);
   color: #f5f5f5;
   border: solid #f5f5f5;
 }
 
 .card:nth-child(3) {
-  background-image: linear-gradient(#ff0000, pink);
+  background: linear-gradient(107.2deg, rgb(150, 15, 15) 10.6%, rgb(247, 0, 0) 91.1%);
 }
 
 .card:nth-child(4) {
-  background-image: linear-gradient(#181717, pink);
+  background: linear-gradient(to right, #434343 0%, black 100%);
   color: #f5f5f5;
   border: solid #f5f5f5;
 }
 
 .card:nth-child(5) {
-  background-image: linear-gradient(#ff0000, pink);
+  background: linear-gradient(107.2deg, rgb(150, 15, 15) 10.6%, rgb(247, 0, 0) 91.1%);
 }
 
 .card:nth-child(6) {
@@ -339,8 +342,8 @@ aside .sidebar a:hover i {
 
 .toggle-btn {
   position: absolute;
-  background: var(--text-color);
-  color: var(--background-color);
+  background: grey;
+  color: var(--text-color);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -358,11 +361,9 @@ aside .sidebar a:hover i {
 }
 
 /* Dropdown button */
-.dropbtn {
-  background-color: var(--text-color);
-  color: var(--background-color);
+.btn-box.btns .btn, .dropbtn, .dropdownbtn, #monthBtn, #monthlyBtn {
   padding: 10px;
-  border-radius: 20px;
+  border-radius: 15px;
   font-size: 14px;
   border: none;
   cursor: pointer;
@@ -416,6 +417,100 @@ aside .sidebar a:hover i {
   border-style: solid;
   border-color: transparent transparent var(--background-color);
 }
+
+
+/*form css*/
+.entry {
+  position: relative;
+  display: flex;
+  background-color: var(--chart-bg);
+  margin-top: 4rem;
+  margin-bottom: 5rem;
+  margin-left: 30%;
+  border: 2px solid var(--main-color);
+  border-radius: 20px;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 0 30px var(--main-color);
+  width: 350px;
+  justify-content: center;
+  align-items: center;
+  height: 440px;
+
+}
+
+.entry form {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  width: 15rem;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.entry form .input-box {
+  display: block;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.entry form .input-box .input-field {
+  position: relative;
+  margin: .8rem 0;
+}
+
+.entry form .input-box .input-field input,
+.entry form .textarea-field textarea {
+  width: 100%;
+  height: 5px;
+  padding: 1.5rem;
+  font-size: 1.6rem;
+  color: var(--text-color);
+  background: transparent;
+  border-radius: .6rem;
+  border: .2rem solid var(--main-color);
+}
+
+.entry form .input-box .input-field input::placeholder,
+.entry form .textarea-field textarea::placeholder {
+  color: var(--text-color);
+}
+
+.entry form .focus {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background: var(--focus);
+  border-radius: .6rem;
+  z-index: -1;
+  transition: .5s;
+}
+
+.entry form .input-box .input-field input:focus~.focus,
+.entry form .input-box .input-field input:valid~.focus,
+.entry form .textarea-field textarea:focus~.focus,
+.entry form .textarea-field textarea:valid~.focus {
+  width: 100%;
+}
+
+.entry form .textarea-field {
+  position: relative;
+  margin: .8rem 0 2.7rem;
+  display: flex;
+}
+
+.entry form .textarea-field textarea {
+  resize: none;
+}
+
+.entry form .btn-box.btns .btn {
+  cursor: pointer;
+}
+
+
+
 
 
 

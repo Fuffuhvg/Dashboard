@@ -52,9 +52,9 @@
     <div class="close" id="close-btn">
        <i class='bx bx-x'></i>
     </div>
-  </div>
-  <div class="sidebar">
-    <a href="#">
+   </div>
+   <div class="sidebar">
+    <a href="index.html">
       <i class='bx bxs-dashboard'></i>
       <h3>Dashboard</h3>
 
@@ -63,7 +63,7 @@
         <h3>Analysis by Company</h3>
   
 
-      <a href="#">
+      <a href="entry.html">
         <i class='bx bxs-data'></i>
         <h3>Data Entry</h3>
       </a>
@@ -73,11 +73,11 @@
       <i class='bx bx-log-out'></i>
       <h3>logout</h3>
     </a>
-  </div>
-  </aside>
-  <!--aside end-->
+   </div>
+   </aside>
+   <!--aside end-->
 
-  <div class="main-content">
+   <div class="main-content">
     <div class="date">
       <input type="date">
     </div>
@@ -127,7 +127,7 @@
       </div>
     </div>
 
-  <div class="charts">
+   <div class="charts">
     <div class="charts-card">
       <h2 class="chart-title"> BEST SELLING PRODUCTS BY QUANTITY</h2>
       <div id="bar-charts"></div>
@@ -136,6 +136,27 @@
     <div class="charts-card">
       <h2 class="chart-title"> TOTAL SALES BY PRODUCT QUANTITY + AMOUNT OVER TIME</h2>
       <div id="line-charts"></div>
+      <div class="chart-toggle">
+        <div class="dropdown">
+          <button class="dropdownbtn" id="weekBtn">Select Month</button>
+          <div class="dropdown-content">
+            <a href="#" data-month="January">January</a>
+            <a href="#" data-month="February">February</a>
+            <a href="#" data-month="March">March</a>
+            <a href="#" data-month="April">April</a>
+            <a href="#" data-month="May">May</a>
+            <a href="#" data-month="June">June</a>
+            <a href="#" data-month="July">July</a>
+            <a href="#" data-month="August">August</a>
+            <a href="#" data-month="September">September</a>
+            <a href="#" data-month="October">October</a>
+            <a href="#" data-month="November">November</a>
+            <a href="#" data-month="December">December</a>
+          </div>
+          
+        </div>
+        <button id="monthBtn">Monthly</button>
+      </div>
     </div>
   </div>
 

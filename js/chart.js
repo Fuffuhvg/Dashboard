@@ -105,79 +105,229 @@ document.addEventListener('DOMContentLoaded', function () {
 
   const barChart = new ApexCharts(document.querySelector('#bar-charts'), barChartOptions);
   barChart.render();
-
-
+});
 
 
 // LINE CHART
-const lineChartsoptions = {
-  series: [{
-    name: "Desktops",
-    data: [10, 41, 35, 51, 49, 62, 69, 91, 148, 155, 160, 165]
-}],
-  chart: {
-  height: 350,
-  type: 'line',
-  zoom: {
-    enabled: false
+document.addEventListener('DOMContentLoaded', function () {
+  // Define your existing monthly data here
+  var existingMonthlyData = [10, 41, 35, 51, 49, 62, 69, 91, 148, 155, 160, 165];
+
+  // Initial chart options
+  var options = {
+    series: [{
+      name: 'Desktops',
+      data: existingMonthlyData // Initial data shown is for existing monthly data
+    }],
+    chart: {
+      height: 350,
+      type: 'line',
+      zoom: {
+        enabled: false
+      }
+    },
+    dataLabels: {
+      enabled: false
+    },
+    tooltip: {
+      shared: true,
+      intersect: false,
+      theme: 'dark',
+      style: {
+        color: 'var(--text-color)',
+      },
+    },
+    stroke: {
+      curve: 'smooth'
+    },
+    title: {
+      text: 'Product Trends by Month',
+      style: {
+        color: 'var(--text-color)',
+      },
+      align: 'left'
+    },
+    colors: ['#ff0000'],
+    grid: {
+      row: {
+        colors: ['var(--text-color)', 'transparent'],
+        opacity: 0.5
+      },
+    },
+    xaxis: {
+      categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+      labels: {
+        style: {
+          colors: 'var(--text-color)',
+        },
+      },
+    },
+    yaxis: {
+      title: {
+        text: 'Quantity',
+        style: {
+          color: 'var(--text-color)',
+        },
+      },
+      labels: {
+        style: {
+          colors: 'var(--text-color)',
+        },
+      },
+    },
+  };
+
+  var chart = new ApexCharts(document.querySelector("#line-charts"), options);
+  chart.render();
+
+  // Dropdown button functionality
+  var dropdownBtn = document.getElementById('weekBtn');
+  var dropdownContent = document.querySelector('.dropdown-content');
+
+  dropdownBtn.addEventListener('click', function () {
+    dropdownContent.classList.toggle('active');
+  });
+
+  // Dropdown item click functionality
+  var dropdownItems = document.querySelectorAll('.dropdown-content a');
+  dropdownItems.forEach(function (item) {
+    item.addEventListener('click', function (e) {
+      e.preventDefault();
+      var selectedMonth = item.getAttribute('data-month');
+      console.log('Selected Month:', selectedMonth);
+      var selectedData = calculateWeeklyData(existingMonthlyData, selectedMonth);
+      console.log('Selected Data:', selectedData);
+      var numOfWeeks = selectedData.length;
+      var weekLabels = generateWeekLabels(numOfWeeks);
+      console.log('Week Labels:', weekLabels);
+
+      // Update chart with weekly data
+      chart.updateSeries([{
+        name: 'Desktops',
+        data: selectedData
+      }]);
+
+      // Update x-axis options
+      chart.updateOptions({
+        xaxis: {
+          categories: weekLabels,
+          tickAmount: numOfWeeks
+        }
+      });
+
+      dropdownContent.classList.remove('active');
+    });
+  });
+
+  // Switch to monthly data
+  var monthlyBtn = document.getElementById('monthBtn');
+  monthlyBtn.addEventListener('click', function () {
+    chart.updateSeries([{
+      name: 'Desktops',
+      data: existingMonthlyData
+    }]);
+    chart.updateOptions({
+      xaxis: {
+        categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+        tickAmount: existingMonthlyData.length
+      }
+    });
+    dropdownContent.classList.remove('active');
+  });
+
+  // Helper function to calculate weekly data based on monthly totals
+  function calculateWeeklyData(existingMonthlyData, selectedMonth) {
+    var numOfWeeks = getNumOfWeeks(selectedMonth);
+    var monthIndex = getMonthIndex(selectedMonth);
+    var monthlyTotal = existingMonthlyData[monthIndex];
+    var distribution = {
+      'January': [15, 25, 20, 10, 30], // Example uneven distribution for January
+      'February': [10, 20, 30, 40],
+      'March': [15, 15, 20, 25, 25], // Example uneven distribution for March
+      'April': [30, 20, 10, 40],
+      'May': [10, 20, 20, 25, 25], // Example uneven distribution for May
+      'June': [25, 35, 15, 25],
+      'July': [20, 20, 20, 15, 25], // Example uneven distribution for July
+      'August': [25, 15, 20, 20, 20], // Example uneven distribution for August
+      'September': [30, 25, 20, 25],
+      'October': [10, 20, 20, 25, 25], // Example uneven distribution for October
+      'November': [20, 40, 20, 20],
+      'December': [10, 30, 20, 10, 30] // Example uneven distribution for December
+    };
+    var selectedDistribution = distribution[selectedMonth] || distributeEvenly(monthlyTotal, numOfWeeks);
+    var weeklyData = distributeUnevenly(monthlyTotal, numOfWeeks, selectedDistribution);
+    return weeklyData;
   }
-},
-dataLabels: {
-  enabled: false
-},
-tooltip: {
-  shared: true,
-  intersect: false,
-  theme: 'dark',
-},
 
-stroke: {
-  curve: 'smooth'
-},
-title: {
-  text: 'Product Trends by Month',
-  style: {
-    color: 'var(--text-color)',
-  },
-  align: 'left'
-},
-colors: ['#ff0000'],
+  // Helper function to distribute weekly data evenly
+  function distributeEvenly(monthlyTotal, numOfWeeks) {
+    var weeklyData = [];
+    for (var i = 0; i < numOfWeeks; i++) {
+      var weeklyValue = Math.round(monthlyTotal / numOfWeeks);
+      weeklyData.push(weeklyValue);
+    }
+    return weeklyData;
+  }
 
-grid: {
-  row: {
-    colors: ['var(--text-color)', 'transparent'], // takes an array which will be repeated on columns
-    opacity: 0.5
-  },
-},
-xaxis: {
-  categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-  labels: {
-    style: {
-      colors: 'var(--text-color)',
-    },
-  },
-},
+  // Helper function to distribute weekly data unevenly based on provided distribution
+  function distributeUnevenly(monthlyTotal, numOfWeeks, distribution) {
+    var weeklyData = [];
+    var totalPercent = distribution.reduce((a, b) => a + b, 0);
+    for (var i = 0; i < numOfWeeks; i++) {
+      var weeklyValue = Math.round(monthlyTotal * (distribution[i] / totalPercent));
+      weeklyData.push(weeklyValue);
+    }
+    return weeklyData;
+  }
 
-yaxis: {
-  title: {
-    text: 'Quantity',
-    style: {
-      color: 'var(--text-color)',
-    },
-  },
+  // Helper function to generate week labels based on number of weeks
+  function generateWeekLabels(numOfWeeks) {
+    var weekLabels = [];
+    for (var i = 1; i <= numOfWeeks; i++) {
+      weekLabels.push('Week ' + i);
+    }
+    return weekLabels;
+  }
 
-  labels: {
-    style: {
-      colors: 'var(--text-color)',
-    },
-  },
-},
-};
+  // Helper function to generate month labels
+  function generateMonthLabels() {
+    return ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  }
 
-const lineChart = new ApexCharts(document.querySelector("#line-charts"), lineChartsoptions);
-lineChart.render();
+  // Helper function to get index of month in array
+  function getMonthIndex(month) {
+    return generateMonthLabels().indexOf(month);
+  }
+
+  // Helper function to get number of weeks for a given month
+  function getNumOfWeeks(month) {
+    switch (month) {
+      case 'January':
+      case 'March':
+      case 'May':
+      case 'July':
+      case 'August':
+      case 'October':
+      case 'December':
+        return 5; // Example: 5 weeks for months with 31 days
+      case 'April':
+      case 'June':
+      case 'September':
+      case 'November':
+        return 4; // Example: 4 weeks for months with 30 days
+      case 'February':
+        return 4; // Example: 4 weeks for February (adjust as needed)
+      default:
+        return 0; // Default to 0 if month not recognized
+    }
+  }
 
 });
+
+
+
+
+
 
 
 // analysis chart
@@ -480,8 +630,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 });
-
-
 
 
 
