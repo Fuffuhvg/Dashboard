@@ -215,35 +215,25 @@ window.onload = function() {
 
 //gradient-line
 document.addEventListener('DOMContentLoaded', function () {
-  // Define weekly data for each month
-  var weeklyData = {
-    'January': [4, 3, 10, 9, 29],
-    'February': [19, 22, 18, 15, 10],
-    'March': [8, 11, 12, 8, 3],
-    'April': [15, 18, 20, 17, 12],
-    'May': [22, 25, 28, 20, 18],
-    'June': [10, 12, 15, 11, 8],
-    'July': [25, 28, 30, 27, 22],
-    'August': [16, 19, 22, 18, 15],
-    'September': [7, 10, 13, 9, 5],
-    'October': [18, 20, 22, 17, 14],
-    'November': [12, 15, 18, 13, 10],
-    'December': [28, 30, 32, 29, 25]
-  };
-
-  var monthlyData = [4, 3, 10, 9, 29, 19, 22, 9, 12, 7, 19, 5];
+  // Define monthly data
+  var monthlyData = [100, 300, 130, 93, 29, 169, 252, 96, 126, 77, 139, 56];
 
   // Initial chart options
   var options = {
     series: [{
       name: 'Sales',
-      data: monthlyData // Initial data shown is monthly
+      data: monthlyData // Initial data shown is for monthly data
     }],
     chart: {
       height: 350,
       type: 'line',
       toolbar: {
         show: false
+      },
+      animations: {
+        enabled: true,
+        easing: 'linear',
+        speed: 800
       }
     },
     stroke: {
@@ -252,11 +242,11 @@ document.addEventListener('DOMContentLoaded', function () {
     },
     xaxis: {
       type: 'category',
-      categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'], // Monthly categories initially
-      tickAmount: 12,
+      categories: generateMonthLabels(), // Initial x-axis labels are monthly
+      tickAmount: monthlyData.length,
     },
     title: {
-      text: 'Forecast',
+      text: 'Monthly Sales',
       align: 'left',
       style: {
         fontSize: "16px",
@@ -294,20 +284,24 @@ document.addEventListener('DOMContentLoaded', function () {
     item.addEventListener('click', function(e) {
       e.preventDefault();
       var selectedMonth = item.getAttribute('data-month');
-      var selectedData = weeklyData[selectedMonth];
+      var selectedData = calculateWeeklyData(monthlyData, selectedMonth);
       var numOfWeeks = selectedData.length;
-      var weekLabels = [];
-      for (var i = 1; i <= numOfWeeks; i++) {
-        weekLabels.push('Week ' + i);
-      }
+      var weekLabels = generateWeekLabels(numOfWeeks);
+      
+      // Update chart with weekly data
       chart.updateSeries([{
+        name: 'Sales',
         data: selectedData
       }]);
+      
+      // Update x-axis options
       chart.updateOptions({
         xaxis: {
-          categories: weekLabels
+          categories: weekLabels,
+          tickAmount: numOfWeeks
         }
       });
+      
       dropdown.classList.remove('active');
     });
   });
@@ -315,23 +309,141 @@ document.addEventListener('DOMContentLoaded', function () {
   // Switch to monthly data
   document.getElementById('monthlyBtn').addEventListener('click', function () {
     chart.updateSeries([{
+      name: 'Sales',
       data: monthlyData
     }]);
     chart.updateOptions({
       xaxis: {
-        categories: options.xaxis.categories // Reset to monthly categories
+        categories: generateMonthLabels(),
+        tickAmount: monthlyData.length
       }
     });
     dropdown.classList.remove('active');
   });
 
-  // Close dropdown when clicking outside
-  window.addEventListener('click', function(e) {
-    if (!dropdown.contains(e.target)) {
-      dropdown.classList.remove('active');
+  // Helper function to calculate weekly data based on monthly totals
+  function calculateWeeklyData(monthlyData, selectedMonth) {
+    var numOfWeeks = getNumOfWeeks(selectedMonth); // Get number of weeks for selected month
+    var monthlyTotal = monthlyData[getMonthIndex(selectedMonth)];
+    var weeklyData = [];
+
+    // Distribute monthly total across weeks of selected month
+    switch (selectedMonth) {
+      case 'January':
+        weeklyData = distributeUnevenly(monthlyTotal, numOfWeeks, [20, 30, 10, 40]); // Example distribution for January
+        break;
+      case 'February':
+        weeklyData = distributeUnevenly(monthlyTotal, numOfWeeks, [10, 20, 30, 40]); // Example distribution for February
+        break;
+      case 'March':
+        weeklyData = distributeUnevenly(monthlyTotal, numOfWeeks, [25, 15, 30, 30]); // Example distribution for March
+        break;
+      case 'April':
+        weeklyData = distributeUnevenly(monthlyTotal, numOfWeeks, [30, 10, 20, 40]); // Example distribution for April
+        break;
+      case 'May':
+        weeklyData = distributeUnevenly(monthlyTotal, numOfWeeks, [15, 25, 25, 35]); // Example distribution for May
+        break;
+      case 'June':
+        weeklyData = distributeUnevenly(monthlyTotal, numOfWeeks, [40, 30, 20, 10]); // Example distribution for June
+        break;
+      case 'July':
+        weeklyData = distributeUnevenly(monthlyTotal, numOfWeeks, [5, 20, 30, 45]); // Example distribution for July
+        break;
+      case 'August':
+        weeklyData = distributeUnevenly(monthlyTotal, numOfWeeks, [35, 25, 15, 25]); // Example distribution for August
+        break;
+      case 'September':
+        weeklyData = distributeUnevenly(monthlyTotal, numOfWeeks, [30, 40, 10, 20]); // Example distribution for September
+        break;
+      case 'October':
+        weeklyData = distributeUnevenly(monthlyTotal, numOfWeeks, [10, 30, 30, 30]); // Example distribution for October
+        break;
+      case 'November':
+        weeklyData = distributeUnevenly(monthlyTotal, numOfWeeks, [20, 40, 20, 20]); // Example distribution for November
+        break;
+      case 'December':
+        weeklyData = distributeUnevenly(monthlyTotal, numOfWeeks, [25, 25, 25, 25]); // Example distribution for December
+        break;
+      default:
+        weeklyData = distributeEvenly(monthlyTotal, numOfWeeks); // Default even distribution
+        break;
     }
-  });
+
+    return weeklyData;
+  }
+
+  // Helper function to distribute weekly data evenly
+  function distributeEvenly(monthlyTotal, numOfWeeks) {
+    var weeklyData = [];
+    for (var i = 0; i < numOfWeeks; i++) {
+      var weeklyValue = Math.round(monthlyTotal / numOfWeeks);
+      weeklyData.push(weeklyValue);
+    }
+    return weeklyData;
+  }
+
+  // Helper function to distribute weekly data unevenly based on provided distribution
+  function distributeUnevenly(monthlyTotal, numOfWeeks, distribution) {
+    var weeklyData = [];
+    for (var i = 0; i < numOfWeeks; i++) {
+      var weeklyValue = Math.round(monthlyTotal * (distribution[i] / 100));
+      weeklyData.push(weeklyValue);
+    }
+    return weeklyData;
+  }
+
+  // Helper function to generate week labels based on number of weeks
+  function generateWeekLabels(numOfWeeks) {
+    var weekLabels = [];
+    for (var i = 1; i <= numOfWeeks; i++) {
+      weekLabels.push('Week ' + i);
+    }
+    return weekLabels;
+  }
+
+  // Helper function to generate month labels
+  function generateMonthLabels() {
+    return ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  }
+
+  // Helper function to get index of month in array
+  function getMonthIndex(month) {
+    return generateMonthLabels().indexOf(month);
+  }
+
+  // Helper function to get number of weeks for a given month
+  function getNumOfWeeks(month) {
+    switch (month) {
+      case 'January':
+      case 'March':
+      case 'May':
+      case 'July':
+      case 'August':
+      case 'October':
+      case 'December':
+        return 5; // Example: 5 weeks for months with 31 days
+      case 'April':
+      case 'June':
+      case 'September':
+      case 'November':
+        return 4; // Example: 4 weeks for months with 30 days
+      case 'February':
+        return 4; // Example: 4 weeks for February (adjust as needed)
+      default:
+        return 0; // Default to 0 if month not recognized
+    }
+  }
 });
+
+
+
+
+
+
+
+
+
 
 
 
