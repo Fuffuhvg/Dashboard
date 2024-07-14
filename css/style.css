@@ -97,7 +97,6 @@
   left: 0;
   width: 100%;
   height: 76px;
-  
   background: var(--background-color);
   border-bottom: solid var(--text-color);
   display: flex;
@@ -205,7 +204,7 @@ aside .sidebar a {
   transition: all 300ms ease;
 }
 
-aside .sidebar a i, .card-inner i{
+aside .sidebar a i, .card-inner i {
   font-size: 1.6rem;
   transition: all 300ms ease;
 }
@@ -400,7 +399,7 @@ td{
   margin-left: 10px;
 }
 
-/* Dropdown button */
+
 .btn-box.btns .btn, .dropbtn, .dropdownbtn, #monthBtn, #monthlyBtn {
   padding: 10px;
   border-radius: 15px;
@@ -409,45 +408,45 @@ td{
   cursor: pointer;
 }
 
-/* Dropdown container */
+
 .dropdown {
   position: relative;
   display: inline-block;
 }
 
-/* Dropdown content (hidden by default) */
+
 .dropdown-content {
   display: none;
   position: absolute;
   background-color: var(--background-color);
-  width: 120px; /* Adjust width as needed */
+  width: 120px; 
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
-  top: 40px; /* Adjust the top position as needed */
+  top: 40px; 
   right: 0;
   max-height: 200px; /* Maximum height for scroll */
   overflow-y: auto; /* Enable vertical scroll */
 }
 
-/* Links inside the dropdown */
+
 .dropdown-content a {
   color: var(--text-color);
-  padding: 8px 12px; /* Adjust padding as needed */
+  padding: 8px 12px; 
   text-decoration: none;
   display: block;
 }
 
-/* Change color of dropdown links on hover */
+
 .dropdown-content a:hover {
   background-color: #5c4f4f;
 }
 
-/* Show the dropdown menu on click */
+
 .dropdown.active .dropdown-content {
   display: block;
 }
 
-/* Triangle indicator */
+
 .dropdown-content::before {
   content: '';
   position: absolute;
@@ -556,6 +555,9 @@ td{
 
 
 /*login css*/
+.home-login .header {
+  background-color: #0c0606;
+}
 
 .navbar {
   position: absolute;
@@ -609,7 +611,9 @@ td{
 }
 
 .wrapper {
-  position: relative;
+  position: absolute;
+  top: 15%;
+  right: 35%;
   width: 400px;
   height: 440px;
   background: transparent;
@@ -625,6 +629,16 @@ td{
   transition: transform .5s ease, height .2s ease;
 }
 
+.wrapper i{
+  font-size: 2.1rem;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  right: 0;
+}
+
 .wrapper h2 {
   color: var(--text-color);
   
@@ -635,7 +649,7 @@ td{
 }
 
 .wrapper.active {
-  height: 520px;
+  height: 470px;
 }
 
 .wrapper .form-box {

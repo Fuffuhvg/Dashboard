@@ -17,11 +17,11 @@ btnPopup.addEventListener('click', ()=> {
   wrapper.classList.add('active-popup');
 });
 
-iconClose.addEventListener('click', ()=> {
-  wrapper.classList.remove('active-popup');
+iconClose.addEventListener('click', () => {
+  wrapper.style.display = 'none'; // This will hide the wrapper
 });
 
-
+//sidebar js
 const sideMenu = document.querySelector("aside");
 const menuBtn = document.querySelector("#menu-btn");
 const closeBtn = document.querySelector("#close-btn");
