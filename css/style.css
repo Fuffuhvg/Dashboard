@@ -763,25 +763,6 @@ td{
   font-weight: 500;
 }
 
-.login-register {
-  font-size: .9rem;
-  color: var(--text-color);
-  text-align: center;
-  font-weight: 500;
-  margin: 25px 0 10px;
-}
-
-.login-register a {
-  color: var(--main-color);
-  text-decoration: none;
-  font-weight: 600;
-}
-
-.login-register a:hover {
-  text-decoration: underline;
-}
-
-
 
 /* Small devices (phones, less than 768px) */
 @media (max-width: 767px) {
