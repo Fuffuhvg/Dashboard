@@ -34,12 +34,12 @@
         <h2>Login</h2>
         <form method="post" action="auth.php"> 
           <div class="input-box">
-            <span class="icon"></span>
+            <i class='bx bxs-envelope'></i>
             <input type="email" name="email" id="email" required>
             <label>Email</label>
           </div>
           <div class="input-box">
-            <span class="icon"></span>
+            <i class='bx bxs-lock-alt'></i>
             <input type="password" name="password" id="password" required>
             <label>Password</label>
           </div>
@@ -88,7 +88,21 @@
   <!-- JavaScript -->
   <script src="js/script.js"></script>
   
-  
+  <script>
+    function navigateToStart() {
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+
+      // Simulated login validation
+      if (email === 'user@example.com' && password === 'password') {
+        localStorage.setItem('loggedIn', 'true');
+        window.location.href = 'index.html';
+      } else {
+        alert('Invalid credentials');
+      }
+    }
+  </script>
+
   
 </body>
 </html>
