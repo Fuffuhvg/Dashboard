@@ -581,8 +581,7 @@ td{
   border-radius: 50px;
   padding: 10px 20px;
   position: relative;
-  color: transparent;
-  -webkit-text-stroke: .5px var(--main-color);
+  color: var(--main-color);
   font-size: 1.5rem;
   background: transparent;
   z-index: 1;
@@ -609,6 +608,13 @@ td{
 .navbar .btnlogin-popup:hover::before {
   width: 100%;
 }
+
+.home-login img {
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
 
 .wrapper {
   position: absolute;
