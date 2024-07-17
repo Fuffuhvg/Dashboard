@@ -75,7 +75,7 @@
       </a>
 
     </a>
-    <a href="#">
+    <a href="#" id="logoutBtn"> 
       <i class='bx bx-log-out'></i>
       <h3>logout</h3>
     </a>
@@ -347,6 +347,13 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.49.2/apexcharts.min.js"></script>
   <script src="js/theme.js"></script>
   <script src="js/script.js"></script>
+
+  <script>
+    document.getElementById('logoutBtn').addEventListener('click', function() {
+      localStorage.removeItem('loggedIn');
+      window.location.href = 'login.html';
+    });
+  </script>
   
 </body>
 </html>
