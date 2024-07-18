@@ -33,9 +33,9 @@
         <h2>Login</h2>
         <form method="post" action="auth.php"> 
           <div class="input-box">
-            <i class='bx bxs-envelope'></i>
-            <input type="email" name="email" id="email" required>
-            <label>Email</label>
+            <i class='bx bxs-user'></i>
+            <input type="text" name="name" id="name" required>
+            <label>Username</label>
           </div>
           <div class="input-box">
             <i class='bx bxs-lock-alt'></i>
@@ -58,11 +58,11 @@
   
   <script>
     function navigateToStart() {
-      const email = document.getElementById('email').value;
+      const name = document.getElementById('name').value;
       const password = document.getElementById('password').value;
 
       // Simulated login validation
-      if (email === 'user@example.com' && password === 'password') {
+      if (name === 'Jeffa' && password === 'password') {
         localStorage.setItem('loggedIn', 'true');
         window.location.href = 'index.html';
       } else {
