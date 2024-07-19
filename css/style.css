@@ -45,10 +45,6 @@
     font-size: 0.87rem;
   }
   
-  .text-muted {
-    color: black;
-  }
-
   img {
     display: block;
     width: 100%;
@@ -143,6 +139,17 @@
   animation-delay: 1.5s;
 }
 
+.menu i{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 4rem;
+  bottom: 0;
+  font-size: 1.6rem;
+  transition: all 300ms ease;
+  cursor: pointer;
+}
+
 .header .heading {
   position: absolute;
   display: flex;
@@ -169,18 +176,6 @@ aside {
   animation: showMenu 400ms ease fowards;
 }
 
-aside .top {
-  background-color: var(--bg-color);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: 1.4rem;
-}
-
-aside .close {
- display: none;
-}
-
 aside .sidebar {
   grid-area: sidebar;
   color: var(--text-color);
@@ -190,7 +185,7 @@ aside .sidebar {
   flex-direction: column;
   height: 100%;
   position: relative;
-  top: 3rem;
+  top: 4rem;
 }
 
 aside .sidebar a {
@@ -204,7 +199,7 @@ aside .sidebar a {
   transition: all 300ms ease;
 }
 
-aside .sidebar a i, .card-inner i {
+aside .sidebar a i, .card-inner i{
   font-size: 1.6rem;
   transition: all 300ms ease;
 }
