@@ -2,14 +2,14 @@ document.addEventListener('DOMContentLoaded', function () {
   const barChartOptions = {
     series: [
       {
-        data: [10, 8, 6, 4, 2],
+        data: [10, 80, 60, 40, 55],
         name: 'Products',
       },
     ],
     chart: {
       type: 'bar',
       background: 'transparent',
-      height: 350,
+      height: 260,
       toolbar: {
         show: false,
       },
@@ -120,7 +120,7 @@ document.addEventListener('DOMContentLoaded', function () {
       data: existingMonthlyData // Initial data shown is for existing monthly data
     }],
     chart: {
-      height: 350,
+      height: 260,
       type: 'line',
       zoom: {
         enabled: false
@@ -338,7 +338,7 @@ window.onload = function() {
     }],
     chart: {
       type: 'bar',
-      height: 350
+      height: 260
     },
 
     tooltip: {
@@ -399,7 +399,7 @@ document.addEventListener('DOMContentLoaded', function () {
       data: monthlyData // Initial data shown is for monthly data
     }],
     chart: {
-      height: 350,
+      height: 260,
       type: 'line',
       toolbar: {
         show: false

@@ -15,14 +15,9 @@ const closeBtn = document.querySelector("#close-btn");
 const themeToggler = document.querySelector(".theme");
 
 // show sidebar
-menuBtn.addEventListener('click', () => {
-  sideMenu.style.left = '0';
-});
 
-// close sidebar
-closeBtn.addEventListener('click', () => {
-  sideMenu.style.left = '-100%';
-});
+
+
 
 //table
 $(window).on("load resize ", function() {

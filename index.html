@@ -9,7 +9,23 @@
     if (!localStorage.getItem('loggedIn')) {
       window.location.href = 'login.html';
     }
-  </script>
+    
+document.addEventListener('DOMContentLoaded', function () {
+  const menuBtn = document.getElementById('menu-btn');
+  const aside = document.querySelector('aside');
+  const mainContent = document.querySelector('.main-content');
+
+  console.log('Menu Button:', menuBtn); // Debugging line
+
+  menuBtn.addEventListener('click', function () {
+    console.log('Menu button clicked'); // Debugging line
+    aside.classList.toggle('hidden');
+    mainContent.classList.toggle('expanded');
+  });
+});
+
+</script>
+
 
   <link rel="stylesheet" href="css/style.css">
 
@@ -34,7 +50,7 @@
     
    <header class="header">
       <a href="#" class="logo">Gilani's</a>
-      
+
         <div class="menu" id="menu-btn">
           <i class='bx bx-menu'></i>
         </div>
@@ -58,6 +74,8 @@
         </div>
       </div>
     </header> 
+
+    <!--aside start-->
     <aside>
    <div class="sidebar">
     <a href="index.html">
@@ -328,13 +346,11 @@
             <a href="#" data-month="November">November</a>
             <a href="#" data-month="December">December</a>
           </div>
-          
         </div>
         <button id="monthBtn">Monthly</button>
       </div>
     </div>
   </div>
-
 </div>
    <!--main-content end-->
   <!--JavaScript-->
