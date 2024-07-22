@@ -102,16 +102,16 @@ document.addEventListener('DOMContentLoaded', function () {
    <!--aside end-->
 
    <div class="main-content">
-      <div class="date">
-          <input type="date" id="dateInput">
-          <button onclick="searchData()">Search</button>
-      </div>
-
-      <div class="search">
-        <input type="text" id="searchInput" placeholder="Search...">
-        <button onclick="searchFunction()">Search</button>
-      </div>
-
+    <div class="date">
+      <label for="startDateInput">Start Date:</label>
+      <input type="date" id="startDateInput">
+      
+      <label for="endDateInput">End Date:</label>
+      <input type="date" id="endDateInput">
+      
+      <button onclick="searchData()">Search</button>
+  </div>
+  
     <div class="main-cards">
       <div class="card">
         <div class="card-inner">
