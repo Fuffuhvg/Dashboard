@@ -887,24 +887,6 @@ td{
   }
 }
 
-/* Specific media query for 1366px width */
-@media (min-width: 1366px) and (max-width: 1366px) and (min-height: 768px) and (max-height: 768px) {
-  .home {
-    grid-template-columns: 14rem auto 22rem;
-  }
-
-  .header {
-    padding: 2rem 8%;
-  }
-
-  main .main-content {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  main .graph {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
 
 /* Extra large devices (large desktops, 1441px and up) */
 @media (min-width: 1441px) {
@@ -918,6 +900,14 @@ td{
 
   main .main-content {
     grid-template-columns: repeat(3, 1fr);
+  }
+
+  .menu i {
+    margin-left: 6rem;
+  }
+
+  .charts-card{
+    height: 30rem;
   }
 
   main .graph {
